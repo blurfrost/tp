@@ -8,21 +8,14 @@ import seedu.address.model.Model;
 import seedu.address.model.animal.NameContainsKeywordsPredicateAnimal;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
+ * Finds and lists all animals in address book whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
-public class FindCommandAnimal extends Command {
-
-    public static final String COMMAND_WORD = "finda";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+public class FindAnimalCommand extends FindCommand {
 
     private final NameContainsKeywordsPredicateAnimal predicate;
 
-    public FindCommandAnimal(NameContainsKeywordsPredicateAnimal predicate) {
+    public FindAnimalCommand(NameContainsKeywordsPredicateAnimal predicate) {
         this.predicate = predicate;
     }
 
@@ -31,7 +24,7 @@ public class FindCommandAnimal extends Command {
         requireNonNull(model);
         model.updateFilteredAnimalList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredAnimalList().size()));
+                String.format(Messages.MESSAGE_FIND_ANIMAL_SUCCESS, model.getFilteredAnimalList().size()));
     }
 
     @Override
@@ -41,11 +34,11 @@ public class FindCommandAnimal extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof FindCommandAnimal)) {
+        if (!(other instanceof FindAnimalCommand)) {
             return false;
         }
 
-        FindCommandAnimal otherFindCommand = (FindCommandAnimal) other;
+        FindAnimalCommand otherFindCommand = (FindAnimalCommand) other;
         return predicate.equals(otherFindCommand.predicate);
     }
 

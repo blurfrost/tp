@@ -16,9 +16,6 @@ import seedu.address.model.animal.AnimalName;
  */
 public class DeleteAnimalCommand extends DeleteCommand {
 
-    public static final String MESSAGE_DELETED_ANIMAL_SUCCESS = "Deleted Animal: %1$s";
-    public static final String MESSAGE_INVALID_ANIMAL_NAME = "No animal with this name was found in the address book";
-
     private final AnimalName name;
 
     /**
@@ -37,10 +34,11 @@ public class DeleteAnimalCommand extends DeleteCommand {
         Animal animalToDelete = list.stream()
                 .filter(animal -> animal.getName().equals(name))
                 .findFirst()
-                .orElseThrow(() -> new CommandException(MESSAGE_INVALID_ANIMAL_NAME));
+                .orElseThrow(() -> new CommandException(Messages.MESSAGE_INVALID_ANIMAL_DISPLAYED_NAME));
 
         model.deleteAnimal(animalToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETED_ANIMAL_SUCCESS, Messages.format(animalToDelete)));
+        return new CommandResult(String.format(Messages.MESSAGE_DELETED_ANIMAL_SUCCESS,
+                Messages.format(animalToDelete)));
     }
 
     @Override

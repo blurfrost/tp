@@ -31,7 +31,7 @@ public class DeletePersonCommandTest {
         PersonName name = personToDelete.getName();
         DeletePersonCommand deletePersonCommand = new DeletePersonCommand(name);
 
-        String expectedMessage = String.format(DeletePersonCommand.MESSAGE_DELETED_PERSON_SUCCESS,
+        String expectedMessage = String.format(Messages.MESSAGE_DELETED_PERSON_SUCCESS,
                 Messages.format(personToDelete));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());

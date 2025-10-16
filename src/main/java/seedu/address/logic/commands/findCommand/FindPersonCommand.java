@@ -11,18 +11,11 @@ import seedu.address.model.person.NameContainsKeywordsPredicatePerson;
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
-public class FindCommandPerson extends Command {
-
-    public static final String COMMAND_WORD = "find";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+public class FindPersonCommand extends FindCommand {
 
     private final NameContainsKeywordsPredicatePerson predicate;
 
-    public FindCommandPerson(NameContainsKeywordsPredicatePerson predicate) {
+    public FindPersonCommand(NameContainsKeywordsPredicatePerson predicate) {
         this.predicate = predicate;
     }
 
@@ -31,7 +24,7 @@ public class FindCommandPerson extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
+                String.format(Messages.MESSAGE_FIND_PERSON_SUCCESS, model.getFilteredPersonList().size()));
     }
 
     @Override
@@ -41,11 +34,11 @@ public class FindCommandPerson extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof FindCommandPerson)) {
+        if (!(other instanceof FindPersonCommand)) {
             return false;
         }
 
-        FindCommandPerson otherFindCommand = (FindCommandPerson) other;
+        FindPersonCommand otherFindCommand = (FindPersonCommand) other;
         return predicate.equals(otherFindCommand.predicate);
     }
 
