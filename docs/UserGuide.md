@@ -13,6 +13,8 @@ Furiends is a **desktop app tailored towards animal lovers, specifically individ
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
@@ -43,6 +45,8 @@ Furiends is a **desktop app tailored towards animal lovers, specifically individ
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Overview of GUI
 ![Ui](images/Ui_explanation.png)
 
@@ -54,6 +58,8 @@ The GUI is made up of the following components:
 5. **Animal View**: Displays the list of animals stored in the address book.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
